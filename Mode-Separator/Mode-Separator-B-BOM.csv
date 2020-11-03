@@ -1,0 +1,16 @@
+"Part";"Value";"Device";"Package";"Description";"DATA-RATE";"DATASHEET-URL";"L";"MF";"MOUNT";"MPN";"OC_FARNELL";"OC_NEWARK";"PART-NUMBER";"PORTS";"VT";
+"D1";"1N4148";"DIODE-SOD123";"SOD123";"DIODE";"";"";"";"";"";"";"";"";"";"";"";
+"D2";"1N4148";"DIODE-SOD123";"SOD123";"DIODE";"";"";"";"";"";"";"";"";"";"";"";
+"D3";"1N4148";"DIODE-SOD123";"SOD123";"DIODE";"";"";"";"";"";"";"";"";"";"";"";
+"D4";"1N4148";"DIODE-SOD123";"SOD123";"DIODE";"";"";"";"";"";"";"";"";"";"";"";
+"R1";"50";"R-EU_R0805";"R0805";"RESISTOR, European symbol";"";"";"";"";"";"";"";"";"";"";"";
+"R2";"50";"R-EU_R0805";"R0805";"RESISTOR, European symbol";"";"";"";"";"";"";"";"";"";"";"";
+"R3";"50";"R-EU_R0805";"R0805";"RESISTOR, European symbol";"";"";"";"";"";"";"";"";"";"";"";
+"R4";"50";"R-EU_R0805";"R0805";"RESISTOR, European symbol";"";"";"";"";"";"";"";"";"";"";"";
+"S1";"";"450301014042";"450301014042";"10x2.5 mm THT WS-SLTV";"";"";"";"";"";"";"";"";"";"";"";
+"S2";"";"450301014042";"450301014042";"10x2.5 mm THT WS-SLTV";"";"";"";"";"";"";"";"";"";"";"";
+"T1";"74930000";"WE-STST_4532_74930000";"WE-STST_74930000";"WE-STST Super Tiny Signal Transformer";"10/100/1000 Base-T, 10/100 Base-T1";"https://katalog.we-online.com/pbs/datasheet/74930000.pdf";"350uH";"";"SMT";"";"";"";" 74930000 ";"1:1";"1500  V (RMS) ";
+"X1";"60314002124524";"LTI-SASF54GT";"LTI-SASF54GT";"SMA vertical PCB thrue hole jack";"";"";"";"";"";"";"unknown";"unknown";"";"";"";
+"X2";"60314002124524";"LTI-SASF54GT";"LTI-SASF54GT";"SMA vertical PCB thrue hole jack";"";"";"";"";"";"";"unknown";"unknown";"";"";"";
+"XCM";"60312002114503";"LTI-SASF54GT";"LTI-SASF54GT";"SMA vertical PCB thrue hole jack";"";"";"";"";"";"";"unknown";"unknown";"";"";"";
+"XDM";"60312002114503";"LTI-SASF54GT";"LTI-SASF54GT";"SMA vertical PCB thrue hole jack";"";"";"";"";"";"";"unknown";"unknown";"";"";"";
