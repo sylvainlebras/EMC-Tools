@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+function drawPlotSpace() {
+
+  		
+		xGraphicOrigin = 100;
+		yGraphicOrigin = 10;
+		xGraphicMax = 1200;
+		yGraphicMax = 800;
+		
+		xFreqOrigin = 9000;
+		xFreqMax = 30000000;
+		xIsLog = 1;
+		
+		
+		yAmplitudeOrigin = 0
+		yAmplitudeMax = 130
+		yDivisions = 14
+		yIsLog = 1;
+		
+		lineStyle = '" style="stroke-width:1;stroke:lightgrey"/>';
+		
+		
+		if(xIsLog)
+		{	// Draw log spaced 
+			startDecade = Math.floor(Math.log10(xFreqOrigin));
+			startLogLine = Math.ceil(xFreqOrigin/(Math.pow(10, startDecade)));
+			
+			stopDecade = Math.floor(Math.log10(xFreqMax));
+			stopLogLine = Math.ceil(xFreqMax/(Math.pow(10, stopDecade)));
+			
+			output = "";
+			output = output + startDecade + "/" + startLogLine + "Hz ---" + stopDecade + "/" + stopLogLine + "Hz";
+			document.getElementById('bounds').innerHTML = output;
+					
+			decade = startDecade;
+			logLine = startLogLine;
+			output = "Lines :";
+			outputSVG = "";
+			
+			while ( (decade < stopDecade)||(logLine <= stopLogLine) ) 
+			{
+				
+				output = output + (logLine * Math.pow(10,decade)) +",";
+				
+				// relative position in viewport
+				linOrigin = Math.log10(xFreqOrigin);
+				linMax = Math.log10(xFreqMax);
+				linCurrent = Math.log10(logLine * Math.pow(10,decade));
+				
+				relative = ((linCurrent-linOrigin)/(linMax-linOrigin));
+				
+				output = output + (100.0 * relative) +"%<br>";
+				
+				if (logLine == 9)
+				{
+					logLine = 1;
+					decade++;
+				}
+				else
+				{
+					logLine++;
+				}
+				
+				outputSVG = outputSVG + '<line x1="' + (xGraphicOrigin + ( relative * (xGraphicMax-xGraphicOrigin))) + '" x2 ="' + (xGraphicOrigin + ( relative * (xGraphicMax-xGraphicOrigin))) + '" y1="' + yGraphicOrigin + '" y2="' + yGraphicMax +  '" style="stroke-width:1;stroke:lightgrey"/>' + "\n";
+				
+			} 
+			
+			//
+			for (let hLine = 0 ; hLine <= yDivisions; hLine++) {
+				outputSVG = outputSVG + '<line x1="' + xGraphicOrigin  + '" x2="' + xGraphicMax + '" y1="' + (yGraphicOrigin + ( (hLine/yDivisions) * (yGraphicMax-yGraphicOrigin))) + '" y2="' + (yGraphicOrigin + ( (hLine/yDivisions) * (yGraphicMax-yGraphicOrigin))) +  '" style="stroke-width:1;stroke:black"/>' + "\n";
+				
+			}
+			//document.getElementById('lines').innerHTML = output;
+			
+
+		}
+		else
+		{
+		
+		}
+		document.getElementById('ltText').innerHTML = outputSVG;
+		document.getElementById('demo').innerHTML = outputSVG;
+}
+
+function drawEMCScan() {
+
+
+}
+
+function drawLimitLine() {
+
+
+}
+
+
+
+</script>
+
+<h1>EMC Investigation report</h1>
+
+<table border=0px>
+	<tr>
+	<td>
+	<svg width="1300" height="900" id="demo">   
+
+	</svg> 
+	</td>
+	
+	<form action="">
+		<td colspan=5>
+			
+			<h4>Available Measurements</h4>
+			<input type="checkbox" id="RS485" name="preset" value="1" onclick="setPreset(0)"><label for="html">Configuration originale - Max peak</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="2" onclick="setPreset(1)"><label for="html">Configuration FTXX 220nF - Max peak</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="3" onclick="setPreset(2)"><label for="html">Configuration FTXX 470nF - Max peak</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="4" onclick="setPreset(3)"><label for="html">Configuration FTXX 220nF + CMC 1mH - Max peak</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="5" onclick="setPreset(4)"><label for="html">Configuration FTXX 220nF + CMC 2.2mH</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="6" onclick="setPreset(5)"><label for="html">Configuration FTXX 220nF + CMC 10mH - Max peak</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="6" onclick="setPreset(5)"><label for="html">Configuration FTXX 220nF + CMC 10mH - Average</label><br>
+			
+			<h4>Available limits</h4>
+			<input type="checkbox" id="RS485" name="preset" value="1" onclick="setPreset(0)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="2" onclick="setPreset(1)"><label for="html">EN-55032 - Conducted Emissions on mains - Quasi-Peak limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="3" onclick="setPreset(2)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="4" onclick="setPreset(3)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="5" onclick="setPreset(4)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="6" onclick="setPreset(5)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="7" onclick="setPreset(6)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="13" onclick="setPreset(12)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="14" onclick="setPreset(13)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="15" onclick="setPreset(14)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			<input type="checkbox" id="RS485" name="preset" value="16" onclick="setPreset(15)"><label for="html">EN-55032 - Conducted Emissions on mains - Average limit</label><br>
+			</li>
+			
+			<button type="button" onclick="drawPlotSpace()">Rafraichir</button>
+			
+			<br>The measurements presented here are performed to identify components that should help reduce EMI levels. Measurements are performed using non CISPR compliant test setups.
+			This is not a EMC certification, we can neither certify the accuracy of measurements nor relevance of the limits selected. 
+		</td>
+		
+		
+	</tr>
+</table>
+
+
+
+
+    
+</td>
+</tr>
+<tr>
+<td colspan=5>
+
+
+<textarea id="ltText" rows="30" cols="100">
+Text For LTSpice
+</textarea> 
+
+</td>
+<p id="bounds"></p>
+
+<p id="lines"></p>
+</table>
+
+</body>
+</html>
